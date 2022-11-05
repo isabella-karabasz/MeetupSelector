@@ -63,3 +63,7 @@ class Proposal(models.Model):
 
     def __str__(self) -> str:
         return self.subject
+
+    @property
+    def likes(self) -> int:
+        return self.liked_by.count()

@@ -1,4 +1,4 @@
-from ninja import ModelSchema
+from ninja import ModelSchema, Field
 from pydantic import UUID4
 
 from meetupselector.proposals.models import Proposal
@@ -45,8 +45,10 @@ class ProposalRetrieveSchema(ModelSchema):
         ]
 
 
+
 class ProposalListSchema(ModelSchema):
     topics: list[TopicRetrieveSchema]
+    likes: int = Field(..., alias="likes")
 
     class Config:
         model = Proposal
